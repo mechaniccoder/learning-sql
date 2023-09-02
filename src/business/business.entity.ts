@@ -1,12 +1,20 @@
 import { Section } from 'src/section/section.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 enum BusinessStatus {
   OPN = 'OPN',
   CLS = 'CLS',
 }
 
-@Entity()
+@Entity({
+  name: 'businesses',
+})
 export class Business {
   @PrimaryGeneratedColumn()
   business_id: number;
@@ -29,5 +37,8 @@ export class Business {
   can_takeout: boolean;
 
   @ManyToOne(() => Section)
+  @JoinColumn({
+    name: 'fk_section_id',
+  })
   fk_section_id: Section;
 }

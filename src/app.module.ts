@@ -6,6 +6,8 @@ import { BusinessModule } from './business/business.module';
 import { MenuModule } from './menu/menu.module';
 import { RatingModule } from './rating/rating.module';
 import { SectionModule } from './section/section.module';
+import { TestModule } from './test/test.module';
+import { SetModule } from './set/set.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { SectionModule } from './section/section.module';
     MenuModule,
     MenuModule,
     RatingModule,
+    TestModule,
+    SetModule,
   ],
   controllers: [AppController],
   providers: [AppService],

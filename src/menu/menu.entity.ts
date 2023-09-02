@@ -1,7 +1,15 @@
 import { Business } from 'src/business/business.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Entity()
+@Entity({
+  name: 'menus',
+})
 export class Menu {
   @PrimaryGeneratedColumn()
   menu_id: number;
@@ -13,7 +21,7 @@ export class Menu {
 
   @Column({
     type: 'decimal',
-    precision: 5,
+    precision: 7,
     scale: 2,
   })
   kilocalories: number;
@@ -25,5 +33,8 @@ export class Menu {
   likes: number;
 
   @ManyToOne(() => Business)
+  @JoinColumn({
+    name: 'fk_business_id',
+  })
   fk_business_id: number;
 }
