@@ -7,7 +7,7 @@ export class SectionController {
 
   @Get(':sectionId')
   getSection(@Param('sectionId', ParseIntPipe) sectionId: number) {
-    const section = this.sectionService.findOne(sectionId);
+    const section = this.sectionService.findOneById(sectionId);
     return section;
   }
 }

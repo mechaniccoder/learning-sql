@@ -1,18 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { Section } from './section.entity';
+import { sectionRepository } from './section.repository';
 
 @Injectable()
 export class SectionService {
-  constructor(
-    @InjectRepository(Section) private sectionRepository: Repository<Section>,
-  ) {}
+  constructor(private readonly sectionRepository: sectionRepository) {}
 
-  async findOne(sectionId: number) {
-    const section = await this.sectionRepository.findOneByOrFail({
-      section_id: sectionId,
-    });
+  async findOneById(sectionId: number): Promise<Section> {
+    const section = await this.sectionRepository.findOneById(sectionId);
 
     return section;
   }
