@@ -1,4 +1,4 @@
-import { IsEnum, IsNumber, IsOptional } from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 import { BusinessStatus } from 'src/business/business.entity';
 
 export class GetSectionWithBusinessDto {
@@ -9,4 +9,8 @@ export class GetSectionWithBusinessDto {
   @IsEnum(BusinessStatus)
   @IsOptional()
   status?: BusinessStatus;
+
+  @IsString()
+  @IsOptional()
+  orderby?: string;
 }

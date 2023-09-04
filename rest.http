@@ -1,4 +1,4 @@
-GET http://localhost:3000/sections/3?status=CLS
+GET http://localhost:3000/sections/2?orderby=business_name
 Content-Type: application/json
 
 ###

@@ -29,7 +29,7 @@ export class sectionRepository {
     sectionId: number,
     query: GetSectionWithBusinessDto,
   ): Promise<Section> {
-    const { floor, status } = query;
+    const { floor, status, orderby } = query;
 
     const sqlQuery = `
         SELECT *
@@ -39,6 +39,7 @@ export class sectionRepository {
         WHERE S.section_id = ${sectionId}
         ${floor ? `AND S.floor = ${floor}` : ''}
         ${status ? `AND B.status = '${status}'` : ''}
+        ORDER BY ${orderby ? orderby : 'B.business_id'}
     `;
 
     const sections = await this.manager.query(sqlQuery);
