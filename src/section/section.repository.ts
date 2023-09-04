@@ -18,4 +18,15 @@ export class sectionRepository {
 
     return result;
   }
+
+  async findAll(): Promise<Section[]> {
+    const sqlQuery = `
+        SELECT *
+        FROM sections 
+    `;
+
+    const sections = await this.manager.query(sqlQuery);
+
+    return sections;
+  }
 }

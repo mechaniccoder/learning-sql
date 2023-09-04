@@ -11,4 +11,10 @@ export class SectionService {
 
     return section;
   }
+
+  async findAll(): Promise<Section[]> {
+    const sections = await this.sectionRepository.findAll();
+
+    return sections;
+  }
 }
