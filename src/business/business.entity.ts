@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-enum BusinessStatus {
+export enum BusinessStatus {
   OPN = 'OPN',
   CLS = 'CLS',
 }

@@ -1,4 +1,5 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { GetSectionWithBusinessDto } from './dtos/get-section-with-businesses.dto';
 import { SectionService } from './section.service';
 
 @Controller('sections')
@@ -8,8 +9,12 @@ export class SectionController {
   @Get(':sectionId')
   async getSectionWithBusiness(
     @Param('sectionId', ParseIntPipe) sectionId: number,
+    @Query() query: GetSectionWithBusinessDto,
   ) {
-    const section = await this.sectionService.findWithBusinesses(sectionId);
+    const section = await this.sectionService.findWithBusinesses(
+      sectionId,
+      query,
+    );
     return section;
   }
 

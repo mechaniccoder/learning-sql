@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { GetSectionWithBusinessDto } from './dtos/get-section-with-businesses.dto';
 import { Section } from './section.entity';
 import { sectionRepository } from './section.repository';
 
@@ -12,8 +13,14 @@ export class SectionService {
     return section;
   }
 
-  async findWithBusinesses(sectionId: number): Promise<Section> {
-    const section = await this.sectionRepository.findWithBusinesses(sectionId);
+  async findWithBusinesses(
+    sectionId: number,
+    query: GetSectionWithBusinessDto,
+  ): Promise<Section> {
+    const section = await this.sectionRepository.findWithBusinesses(
+      sectionId,
+      query,
+    );
 
     return section;
   }
