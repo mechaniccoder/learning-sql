@@ -15,9 +15,14 @@ export class sectionRepository {
         WHERE section_id = ${sectionId}
     `;
 
-    const result = await this.manager.query(sqlQuery);
+    const sections = await this.manager.query(sqlQuery);
+    const section = sections[0];
 
-    return result;
+    if (section === undefined) {
+      throw new Error('Section not found');
+    }
+
+    return section;
   }
 
   async findWithBusinesses(
