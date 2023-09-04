@@ -35,7 +35,6 @@ export class sectionRepository {
         ${floor ? `AND S.floor = ${floor}` : ''}
         ${status ? `AND B.status = '${status}'` : ''}
     `;
-    console.log(sqlQuery);
 
     const sections = await this.manager.query(sqlQuery);
 
