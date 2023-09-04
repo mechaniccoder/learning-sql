@@ -12,6 +12,12 @@ export class SectionService {
     return section;
   }
 
+  async findWithBusinesses(sectionId: number): Promise<Section> {
+    const section = await this.sectionRepository.findWithBusinesses(sectionId);
+
+    return section;
+  }
+
   async findAll(): Promise<Section[]> {
     const sections = await this.sectionRepository.findAll();
 

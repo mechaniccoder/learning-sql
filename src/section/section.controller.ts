@@ -6,8 +6,10 @@ export class SectionController {
   constructor(private sectionService: SectionService) {}
 
   @Get(':sectionId')
-  async getSection(@Param('sectionId', ParseIntPipe) sectionId: number) {
-    const section = await this.sectionService.findOneById(sectionId);
+  async getSectionWithBusiness(
+    @Param('sectionId', ParseIntPipe) sectionId: number,
+  ) {
+    const section = await this.sectionService.findWithBusinesses(sectionId);
     return section;
   }
 

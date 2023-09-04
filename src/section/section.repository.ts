@@ -19,6 +19,20 @@ export class sectionRepository {
     return result;
   }
 
+  async findWithBusinesses(sectionId: number): Promise<Section> {
+    const sqlQuery = `
+        SELECT *
+        FROM sections S
+        LEFT JOIN businesses B
+        ON S.section_id = B.fk_section_id
+        WHERE S.section_id = ${sectionId}
+    `;
+
+    const sections = await this.manager.query(sqlQuery);
+
+    return sections;
+  }
+
   async findAll(): Promise<Section[]> {
     const sqlQuery = `
         SELECT *
