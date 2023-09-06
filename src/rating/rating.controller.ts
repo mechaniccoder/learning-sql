@@ -9,4 +9,13 @@ export class RatingController {
   getRating(@Param('ratingId', ParseIntPipe) ratingId: number) {
     return this.ratingService.findOne(ratingId);
   }
+
+  @Get('/businesses/:businessId')
+  async getRatingsOfBusiness(
+    @Param('businessId', ParseIntPipe) businessId: number,
+  ) {
+    const ratings = await this.ratingService.findWithBusiness(businessId);
+
+    return ratings;
+  }
 }
