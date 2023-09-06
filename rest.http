@@ -20,3 +20,8 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/ratings/businesses/2
 Content-Type: application/json
+
+###
+PATCH http://localhost:3000/menus/1/like
+Content-Type: application/json
+

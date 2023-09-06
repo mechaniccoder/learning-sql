@@ -20,4 +20,14 @@ export class MenuRepository {
 
     return menus ?? [];
   }
+
+  async like(menuId: number) {
+    const sql = `
+        UPDATE menus
+        SET likes = likes + 1
+        WHERE menu_id = ${menuId}
+    `;
+
+    await this.entityManager.query(sql);
+  }
 }

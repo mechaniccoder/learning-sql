@@ -11,4 +11,8 @@ export class MenuService {
 
     return menus;
   }
+
+  async like(menuId: number) {
+    await this.menuRepository.like(menuId);
+  }
 }
