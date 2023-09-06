@@ -12,3 +12,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/sections
 Content-Type: application/json
+
+###
+GET http://localhost:3000/menus/businesses/1
+Content-Type: application/json
