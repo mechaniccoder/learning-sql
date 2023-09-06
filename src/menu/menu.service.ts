@@ -15,4 +15,8 @@ export class MenuService {
   async like(menuId: number) {
     await this.menuRepository.like(menuId);
   }
+
+  async deleteOne(menuId: number) {
+    await this.menuRepository.deleteOne(menuId);
+  }
 }

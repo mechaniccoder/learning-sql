@@ -30,4 +30,13 @@ export class MenuRepository {
 
     await this.entityManager.query(sql);
   }
+
+  async deleteOne(menuId: number) {
+    const sql = `
+        DELETE FROM menus
+        WHERE menu_id = ${menuId}
+    `;
+
+    await this.entityManager.query(sql);
+  }
 }

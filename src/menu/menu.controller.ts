@@ -1,5 +1,6 @@
 import {
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -26,5 +27,10 @@ export class MenuController {
   @Patch(':menuId/like')
   async likeMenu(@Param('menuId', ParseIntPipe) menuId: number) {
     await this.menuService.like(menuId);
+  }
+
+  @Delete(':menuId')
+  async deleteMenu(@Param('menuId', ParseIntPipe) menuId: number) {
+    await this.menuService.deleteOne(menuId);
   }
 }

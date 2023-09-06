@@ -25,3 +25,6 @@ Content-Type: application/json
 PATCH http://localhost:3000/menus/1/like
 Content-Type: application/json
 
+###
+DELETE  http://localhost:3000/menus/1
+Content-Type: application/json
