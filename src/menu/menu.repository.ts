@@ -18,7 +18,19 @@ export class MenuRepository {
 
     const menus = await this.entityManager.query(sql);
 
-    return menus ?? [];
+    return menus;
+  }
+
+  async findWithBusinessesExistence(): Promise<Menu[]> {
+    const sql = `
+      SELECT *
+      FROM menus M
+      WHERE fk_business_id NOT IN (SELECT business_id FROM businesses)
+    `;
+
+    const menusWithBusinessExistence = await this.entityManager.query(sql);
+
+    return menusWithBusinessExistence;
   }
 
   async like(menuId: number) {

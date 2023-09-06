@@ -12,6 +12,13 @@ export class MenuService {
     return menus;
   }
 
+  async findWithBusinessExistence(): Promise<Menu[]> {
+    const menusWithBusinesseExistence =
+      await this.menuRepository.findWithBusinessesExistence();
+
+    return menusWithBusinesseExistence;
+  }
+
   async like(menuId: number) {
     await this.menuRepository.like(menuId);
   }

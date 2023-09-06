@@ -23,6 +23,14 @@ export class MenuController {
     return menus;
   }
 
+  @Get('business-exist')
+  async getMenusWithBusinessExist() {
+    const menusWithBusinessExistence =
+      await this.menuService.findWithBusinessExistence();
+
+    return menusWithBusinessExistence;
+  }
+
   @HttpCode(HttpStatus.NO_CONTENT)
   @Patch(':menuId/like')
   async likeMenu(@Param('menuId', ParseIntPipe) menuId: number) {
