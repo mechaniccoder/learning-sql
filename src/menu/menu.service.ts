@@ -19,6 +19,12 @@ export class MenuService {
     return menusWithBusinesseExistence;
   }
 
+  async findAllBusinessAndMenuName() {
+    const menus = await this.menuRepository.findAllBusinessAndMenuName();
+
+    return menus;
+  }
+
   async like(menuId: number) {
     await this.menuRepository.like(menuId);
   }

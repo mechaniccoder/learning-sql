@@ -33,6 +33,22 @@ export class MenuRepository {
     return menusWithBusinessExistence;
   }
 
+  async findAllBusinessAndMenuName() {
+    const sql = `
+        SELECT menu_name,
+        (
+            SELECT business_name 
+            FROM businesses B 
+            WHERE M.fk_business_id = B.business_id
+        ) AS business_name
+        FROM menus M
+    `;
+
+    const menus = await this.entityManager.query(sql);
+
+    return menus;
+  }
+
   async like(menuId: number) {
     const sql = `
         UPDATE menus

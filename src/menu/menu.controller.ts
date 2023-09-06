@@ -23,6 +23,14 @@ export class MenuController {
     return menus;
   }
 
+  @Get('name')
+  async findAllBusinessAndMenuName() {
+    const menuNamesWithBusiness =
+      await this.menuService.findAllBusinessAndMenuName();
+
+    return menuNamesWithBusiness;
+  }
+
   @Get('business-exist')
   async getMenusWithBusinessExist() {
     const menusWithBusinessExistence =
